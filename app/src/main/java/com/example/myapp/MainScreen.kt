@@ -28,6 +28,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.example.myapp.errors.presentation.model.ErrorsUiModel
 import com.example.myapp.errors.presentation.screen.ErrorsDetailsDialog
 import com.example.myapp.errors.presentation.screen.ErrorsListScreen
+import com.example.myapp.errors.presentation.screen.NewsSettingsDialog
 import com.example.myapp.navigation.Route
 import com.example.myapp.navigation.TopLevelBackStack
 import org.koin.java.KoinJavaComponent.inject
@@ -46,6 +47,8 @@ data object Errors: TopLevelRoute {
 data object ReadMore: TopLevelRoute {
     override val icon: ImageVector = Icons.AutoMirrored.Default.List
 }
+
+data object ErrorsSettings: Route
 
 @Composable
 fun MainScreen() {
@@ -85,6 +88,11 @@ fun MainScreen() {
                     metadata = DialogSceneStrategy.dialog(DialogProperties())
                 ) {
                     ErrorsDetailsDialog(it.errors)
+                }
+                entry<ErrorsSettings>(
+                    metadata = DialogSceneStrategy.dialog(DialogProperties())
+                ) {
+                    NewsSettingsDialog()
                 }
             }
         )
